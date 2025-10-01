@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safari Ice Company</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      :root {
+        --ice-blue: #a0d2eb;
+        --cool-purple: #e5eaf5;
+        --frosty-mint: #d0bdf4;
+        --violet: #8458b3;
+        --dark-blue: #494d5f;
+      }
+
+      body {
+        background: linear-gradient(
+          135deg,
+          var(--cool-purple) 0%,
+          var(--ice-blue) 100%
+        );
+        color: var(--dark-blue);
+        line-height: 1.6;
+      }
+
+      header {
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 15px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo h1 {
+        font-size: 28px;
+        background: linear-gradient(45deg, var(--violet), var(--ice-blue));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-left: 10px;
+      }
+
+      .logo-icon {
+        font-size: 32px;
+        color: var(--violet);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--dark-blue);
+        font-weight: 600;
+        transition: color 0.3s;
+        padding: 8px 12px;
+        border-radius: 20px;
+      }
+
+      nav ul li a:hover {
+        color: var(--violet);
+        background: rgba(164, 216, 235, 0.2);
+      }
+
+      .hero {
+        text-align: center;
+        padding: 100px 5%;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="rgba(160, 210, 235, 0.2)" width="20" height="20"/></svg>')
+          repeat;
+      }
+
+      .hero h2 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        color: var(--dark-blue);
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        max-width: 800px;
+        margin: 0 auto 30px;
+        color: var(--dark-blue);
+      }
+
+      .btn {
+        display: inline-block;
+        background: linear-gradient(45deg, var(--violet), var(--ice-blue));
+        color: white;
+        padding: 15px 40px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .products {
+        padding: 80px 5%;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 2.5rem;
+        color: var(--violet);
+        position: relative;
+      }
+
+      .section-title:after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(45deg, var(--violet), var(--ice-blue));
+        margin: 15px auto;
+        border-radius: 10px;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .product-img {
+        height: 200px;
+        background: linear-gradient(45deg, var(--frosty-mint), var(--ice-blue));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 80px;
+      }
+
+      .product-info {
+        padding: 20px;
+      }
+
+      .product-info h3 {
+        color: var(--violet);
+        margin-bottom: 10px;
+      }
+
+      .about {
+        padding: 80px 5%;
+        background: linear-gradient(
+          135deg,
+          var(--frosty-mint) 0%,
+          var(--ice-blue) 100%
+        );
+        color: white;
+      }
+
+      .about-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .about-text h2 {
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      .about-image {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 30px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 100px;
+        color: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .testimonials {
+        padding: 80px 5%;
+        background: white;
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .testimonial-card {
+        background: var(--cool-purple);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-author {
+        font-weight: bold;
+        color: var(--violet);
+      }
+
+      .contact {
+        padding: 80px 5%;
+        background: linear-gradient(
+          135deg,
+          var(--ice-blue) 0%,
+          var(--frosty-mint) 100%
+        );
+        color: white;
+      }
+
+      .contact-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .contact-icon {
+        font-size: 24px;
+        color: white;
+      }
+
+      .contact-form {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      footer {
+        background: var(--dark-blue);
+        color: white;
+        text-align: center;
+        padding: 30px 5%;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .social-icons a {
+        color: white;
+        font-size: 24px;
+        transition: color 0.3s;
+      }
+
+      .social-icons a:hover {
+        color: var(--ice-blue);
+      }
+
+      @media (max-width: 768px) {
+        .about-content,
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+
+        nav ul {
+          display: none;
+        }
+
+        .hero h2 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="currentColor"
+          class="bi bi-truck"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A2 2 0 0 1 4.732 11h5.536a2 2 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2"
+          />
+        </svg>
+        <h1>SAFARI COMPANY</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h2>Premium Ice Solutions</h2>
+      <p>
+        Delivering crystal-clear ice for all your needs - from restaurants and
+        bars to special events and home use.
+      </p>
+      <a href="#" class="btn">Order Now</a>
+    </section>
+
+    <section class="products">
+      <h2 class="section-title">Our Products</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-img">
+            <img src="./images/packet ice.png" height="150px"></i>
+          </div>
+          <div class="product-info">
+            <h3>Packet Ice</h3>
+            <p>
+              Perfect for ice sculptures and long-lasting cooling. Available in
+              various sizes.
+            </p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img src="./images/cup.png" height="180px"></i>
+          </div>
+          <div class="product-info">
+            <h3>Cup drink</h3>
+            <p>
+              Classic cube shape ideal for drinks and commercial use. Crisp and
+              clear.
+            </p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img">
+            <img src="./images/bottle img.png" height="130px" ></i>
+          </div>
+          <div class="product-info">
+            <h3>bottle drink</h3>
+            <p>
+              Perfect for cocktails, slushes, and medical applications. Flaky
+              texture.
+            </p>
+          </div>
+        </div>
+        <div class="product-card"></div>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="about-content">
+        <div class="about-text">
+          <h2 class="section-title">About Our Ice</h2>
+          <p>
+            At Frosty Delights, we've been crafting premium ice since 2000. Our
+            state-of-the-art purification process ensures that every batch of
+            ice is 99.9% pure, crystal clear, and free from impurities.
+          </p>
+          <p>
+            We use advanced manufacturing techniques and sustainable practices
+            to deliver the highest quality ice products to restaurants, bars,
+            hotels, and homes throughout the region.
+          </p>
+        </div>
+        <div class="about-image">
+          <img src="./images/logo.png" height="300" width="500"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "The quality of ice from Frosty Delights has significantly improved
+            our cocktail presentation. Our customers love the clear,
+            slow-melting cubes!"
+          </p>
+          <p class="testimonial-author">- Maria Lopez, The Blue Bar</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "We've been using Frosty Delights for our seafood displays for
+            years. Their block ice lasts longer than any other supplier's."
+          </p>
+          <p class="testimonial-author">- James Wilson, Ocean Fresh Market</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "The crushed ice is perfect for our snow cones at the summer
+            festival. Always delivered on time and in perfect condition."
+          </p>
+          <p class="testimonial-author">- Sarah Johnson, Summer Fun Festival</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt contact-icon"></i>
+            <p>123, Matala Road Ak</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone contact-icon"></i>
+            <p>0123456789</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope contact-icon"></i>
+            <p>info@safaryice.com</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock contact-icon"></i>
+            <p>Open 24/7 for all your ice needs</p>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Send us a message</h3>
+          <form>
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="Faris" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="Faris@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                rows="4"
+                placeholder="Tell us about your ice needs..."
+              ></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p>&copy; 2023 SAFARI ICE COMPANY. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
