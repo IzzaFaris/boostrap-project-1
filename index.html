@@ -8,352 +8,7 @@
       rel="stylesheet"
       href="style.css"
     />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-
-      :root {
-        --ice-blue: #a0d2eb;
-        --cool-purple: #e5eaf5;
-        --frosty-mint: #d0bdf4;
-        --violet: #8458b3;
-        --dark-blue: #494d5f;
-      }
-
-      body {
-        background: linear-gradient(
-          135deg,
-          var(--cool-purple) 0%,
-          var(--ice-blue) 100%
-        );
-        color: var(--dark-blue);
-        line-height: 1.6;
-      }
-
-      header {
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        padding: 15px 5%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-      }
-
-      .logo h1 {
-        font-size: 28px;
-        background: linear-gradient(45deg, var(--violet), var(--ice-blue));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        margin-left: 10px;
-      }
-
-      .logo-icon {
-        font-size: 32px;
-        color: var(--violet);
-      }
-
-      nav ul {
-        display: flex;
-        list-style: none;
-      }
-
-      nav ul li {
-        margin-left: 25px;
-      }
-
-      nav ul li a {
-        text-decoration: none;
-        color: var(--dark-blue);
-        font-weight: 600;
-        transition: color 0.3s;
-        padding: 8px 12px;
-        border-radius: 20px;
-      }
-
-      nav ul li a:hover {
-        color: var(--violet);
-        background: rgba(164, 216, 235, 0.2);
-      }
-
-      .hero {
-        text-align: center;
-        padding: 100px 5%;
-        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="rgba(160, 210, 235, 0.2)" width="20" height="20"/></svg>')
-          repeat;
-      }
-
-      .hero h2 {
-        font-size: 3.5rem;
-        margin-bottom: 20px;
-        color: var(--dark-blue);
-        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
-      }
-
-      .hero p {
-        font-size: 1.5rem;
-        max-width: 800px;
-        margin: 0 auto 30px;
-        color: var(--dark-blue);
-      }
-
-      .btn {
-        display: inline-block;
-        background: linear-gradient(45deg, var(--violet), var(--ice-blue));
-        color: white;
-        padding: 15px 40px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.2rem;
-        transition: transform 0.3s, box-shadow 0.3s;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .btn:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-      }
-
-      .products {
-        padding: 80px 5%;
-        background: rgba(255, 255, 255, 0.8);
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 50px;
-        font-size: 2.5rem;
-        color: var(--violet);
-        position: relative;
-      }
-
-      .section-title:after {
-        content: "";
-        display: block;
-        width: 100px;
-        height: 5px;
-        background: linear-gradient(45deg, var(--violet), var(--ice-blue));
-        margin: 15px auto;
-        border-radius: 10px;
-      }
-
-      .product-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-      }
-
-      .product-card {
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
-      }
-
-      .product-card:hover {
-        transform: translateY(-10px);
-      }
-
-      .product-img {
-        height: 200px;
-        background: linear-gradient(45deg, var(--frosty-mint), var(--ice-blue));
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        font-size: 80px;
-      }
-
-      .product-info {
-        padding: 20px;
-      }
-
-      .product-info h3 {
-        color: var(--violet);
-        margin-bottom: 10px;
-      }
-
-      .about {
-        padding: 80px 5%;
-        background: linear-gradient(
-          135deg,
-          var(--frosty-mint) 0%,
-          var(--ice-blue) 100%
-        );
-        color: white;
-      }
-
-      .about-content {
-        max-width: 1000px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        align-items: center;
-      }
-
-      .about-text h2 {
-        color: white;
-        margin-bottom: 20px;
-      }
-
-      .about-image {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 30px;
-        height: 300px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 100px;
-        color: white;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      .testimonials {
-        padding: 80px 5%;
-        background: white;
-      }
-
-      .testimonial-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-      }
-
-      .testimonial-card {
-        background: var(--cool-purple);
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .testimonial-text {
-        font-style: italic;
-        margin-bottom: 20px;
-      }
-
-      .testimonial-author {
-        font-weight: bold;
-        color: var(--violet);
-      }
-
-      .contact {
-        padding: 80px 5%;
-        background: linear-gradient(
-          135deg,
-          var(--ice-blue) 0%,
-          var(--frosty-mint) 100%
-        );
-        color: white;
-      }
-
-      .contact-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-      }
-
-      .contact-info {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .contact-icon {
-        font-size: 24px;
-        color: white;
-      }
-
-      .contact-form {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 8px;
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        padding: 12px;
-        border: none;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.9);
-      }
-
-      footer {
-        background: var(--dark-blue);
-        color: white;
-        text-align: center;
-        padding: 30px 5%;
-      }
-
-      .social-icons {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin: 20px 0;
-      }
-
-      .social-icons a {
-        color: white;
-        font-size: 24px;
-        transition: color 0.3s;
-      }
-
-      .social-icons a:hover {
-        color: var(--ice-blue);
-      }
-
-      @media (max-width: 768px) {
-        .about-content,
-        .contact-container {
-          grid-template-columns: 1fr;
-        }
-
-        nav ul {
-          display: none;
-        }
-
-        .hero h2 {
-          font-size: 2.5rem;
-        }
-
-        .hero p {
-          font-size: 1.2rem;
-        }
-      }
-    </style>
+   
   </head>
   <body>
     <header>
@@ -397,7 +52,7 @@
       <div class="product-grid">
         <div class="product-card">
           <div class="product-img">
-            <img src="./images/packet ice.png" height="150px"></i>
+            <img src="packet ice.png" height="150px"></i>
           </div>
           <div class="product-info">
             <h3>Packet Ice</h3>
@@ -421,7 +76,7 @@
         </div>
         <div class="product-card">
           <div class="product-img">
-            <img src="./images/bottle img.png" height="130px" ></i>
+            <img src="bottle img.png" height="130px" ></i>
           </div>
           <div class="product-info">
             <h3>bottle drink</h3>
@@ -451,7 +106,7 @@
           </p>
         </div>
         <div class="about-image">
-          <img src="./images/logo.png" height="300" width="500"></i>
+          <img src="logo.png" height="300" width="500"></i>
         </div>
       </div>
     </section>
@@ -541,5 +196,6 @@
     </footer>
   </body>
 </html>
+
 
 
